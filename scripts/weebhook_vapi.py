@@ -27,7 +27,8 @@ def webhook():
     if message_vapi.get('type') == 'end-of-call-report':
 
         # Extract the necessary information to save a history
-        id_lead = message_vapi.get('call').get('metadata').get('id_lead')
+        id_lead = message_vapi.get('call').get('metadata').get('idLead')
+        print(id_lead)
         phone_number = message_vapi.get('call').get('customer').get('number')
         date = message_vapi.get('call').get('updatedAt').split('.')[0]
         ended_reason = message_vapi.get('endedReason')
@@ -37,7 +38,7 @@ def webhook():
         # Save the information as a note in the specific lead
         iris = IrisCRM()
         response = iris.create_note_for_lead(id_lead, phone_number, date, ended_reason, transcript, summary)
-
+        print(response.text)
         return jsonify({"status": "success"}), 200
     else:
         return jsonify({"status": "ignored"}), 200
