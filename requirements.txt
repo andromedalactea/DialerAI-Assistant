@@ -2,3 +2,4 @@ requests==2.31.0
 flask==3.0.2
 python-dotenv==1.0.1
 pyngrok==7.1.5
+cryptography==42.0.5
