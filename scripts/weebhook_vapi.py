@@ -27,7 +27,7 @@ def webhook():
     if message_vapi.get('type') == 'end-of-call-report':
 
         # Extract the necessary information to save a history
-        id_lead = message_vapi.get('call').get('customerId')
+        id_lead = message_vapi.get('call').get('metadata').get('id_lead')
         phone_number = message_vapi.get('call').get('customer').get('number')
         date = message_vapi.get('call').get('updatedAt').split('.')[0]
         ended_reason = message_vapi.get('endedReason')
