@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 # Chage the environment variables
 load_dotenv()
 
-def call_ai(id_lead, phone_number, phoneNumberId="c976502a-22c5-4f10-9aa0-36bd075d473b", assistant_id="6ea5c51c-7adb-441e-9265-485aee43cae2"):
+def call_ai(id_lead, phone_number, name, phoneNumberId="c976502a-22c5-4f10-9aa0-36bd075d473b", assistant_id="6ea5c51c-7adb-441e-9265-485aee43cae2"):
     """
     Calls the AI assistant using the VAPI API.
 
@@ -28,6 +28,9 @@ def call_ai(id_lead, phone_number, phoneNumberId="c976502a-22c5-4f10-9aa0-36bd07
       "assistantId": assistant_id,
       "metadata": {
           "id_lead": id_lead
+      },
+      "assistant": {
+           "firstMessage": f"Hi! Can i speak to {name}? "
       }
     }
     headers = {
@@ -43,5 +46,5 @@ def call_ai(id_lead, phone_number, phoneNumberId="c976502a-22c5-4f10-9aa0-36bd07
 if __name__ == "__main__":
     id_lead = "11412"
     phone_number = "+16179702027"
-    print(call_ai(id_lead, phone_number))
+    print(call_ai(id_lead, phone_number, 'Alll about you salon Phoenix'))
 

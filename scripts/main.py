@@ -29,13 +29,13 @@ def main_flux_dialer(id_category, id_status):
         lead = iris.get_info_by_lead(lead_id, skip_empty_set=1)
 
         # Extract general information
-        customer_id = lead["id_lead"]
+        id_lead = lead["id_lead"]
         name = lead["name_company"]
         # Extract the first phone number
         phone_number = lead["phones"][0] if lead["phones"] else None
 
         if phone_number is not None:
-            # call = call_ai(customer_id, phone_number)
+            # call = call_ai(id_lead, phone_number, name)
             call = "Call made"
             if call == "Call made":
                 print(f"Called {phone_number} for customer {name}")
