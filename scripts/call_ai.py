@@ -35,7 +35,7 @@ def call_ai(customer_id, phone_number, phoneNumberId="c976502a-22c5-4f10-9aa0-36
 
     response = requests.request("POST", url, json=payload, headers=headers)
 
-    print(response.text)
+    return "Call made" if response.status_code == 200 else "Error making the call"
 
 # Example usage:
 if __name__ == "__main__":

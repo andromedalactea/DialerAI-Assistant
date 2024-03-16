@@ -28,22 +28,22 @@ def main_flux_dialer(id_category, id_status):
     for lead_id in leads:
         lead = iris.get_info_by_lead(lead_id, skip_empty_set=1)
 
+        # Extract general information
         customer_id = lead["id_lead"]
         name = lead["name_company"]
         # Extract the first phone number
         phone_number = lead["phones"][0] if lead["phones"] else None
 
         if phone_number is not None:
-            # call_ai(customer_id, phone_number)
-            print(f"Called {phone_number} for customer {name}")
-            time.sleep(5) # To don't exceed the API rate limit
+            # call = call_ai(customer_id, phone_number)
+            call = "Call made"
+            if call == "Call made":
+                print(f"Called {phone_number} for customer {name}")
+                time.sleep(5) # To don't exceed the API rate limit
         else:
             print(f"No phone number for customer {name}")
             continue
     return "Process finished."
-
-        
-
 
 # Example usage
 if __name__ == "__main__":
